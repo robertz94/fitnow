@@ -14,6 +14,11 @@ const getTokenFrom = request => {
     return null
   }
 
+  router.get('/', async (request, response) => {
+    const categories = await Category.find({})
+    response.json(categories)
+})
+
 router.post('/', async (request, response) => {
     const body = request.body
     const token = getTokenFrom(request)

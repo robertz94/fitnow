@@ -13,6 +13,16 @@ const getTokenFrom = request => {
     return null
 }
 
+router.get('/', async (request, response) => {
+    const products = await Product.find({})
+    response.json(products)
+})
+
+router.get('/:id', async (request, response) => {
+    const product = await Product.findById(request.params.id)
+    response.json(product)
+})
+
 router.post('/', async (request, response) => {
     const body = request.body
     const token = getTokenFrom(request)
