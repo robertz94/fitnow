@@ -6,7 +6,10 @@ require('dotenv').config()
 
 const userRouter = require('./controllers/users')
 const loginRouter = require('./controllers/login')
+<<<<<<< HEAD
 const categoryRouter = require('./controllers/categories')
+=======
+>>>>>>> c89f369ceb4744cf9b513d5721e7cc870f7e9063
 
 const PORT = process.env.PORT
 const url = 
@@ -21,7 +24,10 @@ app.use(express.json())
 
 app.use('/api/users', userRouter)
 app.use('/api/login', loginRouter)
+<<<<<<< HEAD
 app.use('/api/categories', categoryRouter)
+=======
+>>>>>>> c89f369ceb4744cf9b513d5721e7cc870f7e9063
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
