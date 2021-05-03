@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/robertz94/fitnow/issues"
   },
-  "homepage": "https://github.com/robertz94/fitnow#readme"
+  "homepage": "https://github.com/robertz94/fitnow#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0"
+  }
 }
