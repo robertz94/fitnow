@@ -4,10 +4,10 @@ const cors = require('cors')
 const mongoose = require('mongoose')
 require('dotenv').config()
 
-const userRouter = require('./controllers/users')
-const loginRouter = require('./controllers/login')
-const categoryRouter = require('./controllers/categories')
-const productRouter = require('./controllers/products')
+const userRouter = require('./routes/users')
+const loginRouter = require('./routes/login')
+const categoryRouter = require('./routes/categories')
+const productRouter = require('./routes/products')
 
 const PORT = process.env.PORT
 const url = 

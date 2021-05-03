@@ -1,9 +1,8 @@
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
-const router = require('express').Router()
 const User = require('../models/user')
 
-router.post('/', async(request, response) => {
+exports.userLogin = async(request, response) => {
     const body = request.body
     
     const user = await User.findOne({ email: body.email })
@@ -27,6 +26,4 @@ router.post('/', async(request, response) => {
     response
         .status(200)
         .send({ token, email: user.email, name: user.name})
-})
-
-module.exports = router
+}

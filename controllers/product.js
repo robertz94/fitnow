@@ -1,6 +1,4 @@
-const express = require('express')
 const jwt = require('jsonwebtoken')
-const router = express.Router()
 const mongoose = require('mongoose')
 const Product = require('../models/product')
 
@@ -13,17 +11,17 @@ const getTokenFrom = request => {
     return null
 }
 
-router.get('/', async (request, response) => {
+exports.getAll = async (request, response) => {
     const products = await Product.find({})
     response.json(products)
-})
+}
 
-router.get('/:id', async (request, response) => {
+exports.getOne = async (request, response) => {
     const product = await Product.findById(request.params.id)
     response.json(product)
-})
+}
 
-router.post('/', async (request, response) => {
+exports.addProduct = async (request, response) => {
     const body = request.body
     const token = getTokenFrom(request)
   const decodedToken = jwt.verify(token, process.env.SECRET)
@@ -43,6 +41,4 @@ router.post('/', async (request, response) => {
   const savedProduct = await product.save()
 
   response.json(savedProduct)
-})
-
-module.exports = router
+}
