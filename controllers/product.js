@@ -1,4 +1,3 @@
-const jwt = require('jsonwebtoken')
 const mongoose = require('mongoose')
 const Product = require('../models/product')
 
@@ -15,7 +14,7 @@ exports.getOne = async (request, response) => {
 exports.addProduct = async (request, response) => {
     const body = request.body
 
-  const product = new Product ({
+    const product = new Product ({
       name: body.name,
       description: body.description,
       price: body.price,
@@ -27,4 +26,19 @@ exports.addProduct = async (request, response) => {
   const savedProduct = await product.save()
 
   response.json(savedProduct)
+
+}
+
+exports.updateProduct = async (request, response, next) => {
+    Product.findByIdAndUpdate(request.params.id, request.body, { new: true })
+        .then(updatedProduct => {
+            response.json(updatedProduct)
+        })
+}
+
+exports.removeProduct = (request, response) => {
+    Product.findByIdAndRemove(request.params.id)
+        .then(result => {
+            response.status(204).end()
+        })
 }
